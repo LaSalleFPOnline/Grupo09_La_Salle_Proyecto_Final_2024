@@ -1,0 +1,50 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+.titulo {
+    text-align: center;
+}
+.boton-acceso-admin {
+    position: absolute;
+    top: 3vw;
+    right: 3vw;
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 10px 10px;
+    font-size: 14px;
+    border: 1px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.boton-reservar-pista {
+    position: absolute;
+    top: 30vw;
+    left: 10vw;
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #FFF;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.boton-tienda-online {
+    position: absolute;
+    top: 30vw;
+    right: 10vw;
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #FFF;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+}
