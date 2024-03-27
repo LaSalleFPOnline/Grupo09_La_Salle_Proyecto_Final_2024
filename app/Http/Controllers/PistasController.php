@@ -42,7 +42,6 @@ class PistasController extends Controller
         return redirect()->route('listar_pistas')->with('mensaje', 'La pista ha sido actualizada correctamente.');
     } 
 
-
     public function eliminar($id) 
     {
         Pista::destroy($id);

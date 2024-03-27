@@ -1,50 +1,151 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+@font-face {
+    font-family: "Fun City Level 3 Basic";
+    src: url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.eot");
+    src: url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.svg#Fun City Level 3 Basic")format("svg");
+}
+header {
+    height: 3vw;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
+    font-family: "Fun City Level 3 Basic";
+    background-color: #FEB237;
+    height: 100%;
 }
-.titulo {
-    text-align: center;
+#contenedor-imagen-fondo {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+#imagen-fondo {
+    position: absolute;
+    top: 0vw;
+    left: 0vw;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+#logo {
+    position: absolute;
+    top: 1vw;
+    left: 30vw;
+    height: 5vw;
+    width: 5vw;
+}
+#titulo {
+    position: absolute;
+    top: 2vw;
+    left: 35vw;
+    font-weight: normal;
+    font-size: 3vw;
+    color: white;
 }
 .boton-acceso-admin {
     position: absolute;
-    top: 3vw;
+    top: 1.5vw;
     right: 3vw;
+    width: 7vw;
     display: inline-block;
     background-color: white;
     color: black;
-    padding: 10px 10px;
-    font-size: 14px;
-    border: 1px solid;
+    padding: 0.5vw 1vw;
+    font-size: 0.5vw;
+    text-align: center;
+    border: 0px solid;
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
+    transition: transform .2s;
 }
-.boton-reservar-pista {
+.boton-acceso-cliente {
     position: absolute;
-    top: 30vw;
-    left: 10vw;
+    top: 3.5vw;
+    right: 3vw;
+    width: 7vw;
     display: inline-block;
-    background-color: #4CAF50;
-    color: #FFF;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
+    background-color: white;
+    color: black;
+    padding: 0.5vw 1vw;
+    font-size: 0.5vw;
+    text-align: center;
+    border: 0px solid;
     border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
+    transition: transform .2s;
+}
+.boton-reservar-pista, .boton-tienda-online {
+    position: absolute;
+    display: inline-block;
+    background-color: #FEB237;
+    color: #FFF;
+    padding: 1vw 3vw;
+    font-size: 1vw;
+    border: none;
+    border-radius: 1vw;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .2s;
 }
 .boton-tienda-online {
+    top: 50%;
+    right: 12vw; 
+}
+
+.boton-reservar-pista {
+    top: 50%;
+    left: 12vw; 
+}
+#pistas {
     position: absolute;
-    top: 30vw;
-    right: 10vw;
-    display: inline-block;
-    background-color: #4CAF50;
-    color: #FFF;
-    padding: 15px 30px;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+table {
+    background-color: white;
+    margin: 0 auto;
+}
+table, th, tr, td {
+    border: 1px solid black;
+    align-content: center;
+    font-size: 1vw;
+}
+.celda-hora {
+    background-color: white;
+    text-align: center;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.celda-nombre-pista {
+    padding: 1vw;
+}
+.celda-pista {
+    background-color: white;
     cursor: pointer;
-    text-decoration: none;
+    text-align: center;
+    height: 2vw;
+}
+.celda-pista:hover {
+    background-color: blueviolet;
+    cursor: pointer;
+    text-align: center;
+}
+#footer {
+    position: absolute;
+    bottom: 1vw;
+    left: 35vw;
+    font-family: "Fun City Level 3 Basic"!important;
+    font-weight: normal;
+    font-size: 1vw;
+    color: white;    
 }

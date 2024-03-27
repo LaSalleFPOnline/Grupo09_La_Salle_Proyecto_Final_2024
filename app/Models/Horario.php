@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Pista extends Model
+class Horario extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'pistas';
+    protected $table = 'horarios';
     protected $primaryKey = 'id';
-    protected $fillable = ['CodigoPista', 'DescripcionPista'];
+    protected $fillable = ['HoraDesde', 'HoraHasta'];
     protected $dates = ['deleted_at'];
 }

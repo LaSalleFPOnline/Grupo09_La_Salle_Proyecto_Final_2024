@@ -1,6 +1,6 @@
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h4>Padel Booking</h4>
+        <h4 id="titulo-menu">Padel Booking</h4>
     </div>
     <ul class="list-unstyled">
         <p>Panel de control</p>
@@ -8,10 +8,10 @@
             <a href="#">Reservas</a>
         </li>
         <li>
-            <a href="#">Facturas</a>
+            <a href="{{ route('listar_ventas') }}">Ventas</a>
         </li>
         <li>
-            <a href="#">Cobros</a>
+            <a href="{{ route('listar_cobros') }}">Cobros</a>
         </li>
         <li>
             <a href="#Almacen" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Almacen</a>
@@ -31,17 +31,20 @@
             <a href="#Tablas" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Tablas</a>
             <ul class="collapse list-unstyled" id="Tablas">
                 <li>
-                    <a href="#">Artículos</a>
+                    <a href="{{ route('listar_articulos') }}">Artículos</a>
                 </li>
                 <li>
-                    <a href="#">Familias</a>
+                    <a href="{{ route('listar_familias') }}">Familias</a>
                 </li>
                 <li>
                     <a href="{{ route('listar_pistas') }}">Pistas</a>
                 </li>
                 <li>
-                    <a href="#">Usuarios</a>
+                    <a href="{{ route('listar_usuarios') }}">Usuarios</a>
                 </li>
+                <li>
+                    <a href="{{ route('editar_datos_generales') }}">Datos generales</a>
+                </li>                
             </ul>
         </li>
     </ul>

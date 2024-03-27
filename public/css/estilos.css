@@ -1,3 +1,15 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+@font-face {
+    font-family: "Fun City Level 3 Basic";
+    src: url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.eot");
+    src: url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.svg#Fun City Level 3 Basic")format("svg");
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #fafafa;
@@ -116,7 +128,10 @@ ul ul a {
     background: #6d7fcc;
 }
 
-
+#titulo-menu {
+    font-family: "Fun City Level 3 Basic";
+    font-size: 1vw;
+}
 
 
 
@@ -134,6 +149,8 @@ ul ul a {
 #page {
     padding: 20px;
 }
+
+
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */

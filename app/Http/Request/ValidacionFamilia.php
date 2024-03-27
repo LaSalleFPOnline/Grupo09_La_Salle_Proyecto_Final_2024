@@ -4,7 +4,7 @@ namespace App\Http\Request;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidacionPista extends FormRequest
+class ValidacionFamilia extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,15 @@ class ValidacionPista extends FormRequest
     public function rules()
     {
         return [
-            'CodigoPista' => 'required|integer',
-            'DescripcionPista' => 'required|max:200',
+            'CodigoFamilia' => 'required|integer',
+            'DescripcionFamilia' => 'required|max:200',
         ];
     }
 
     public function messages()
     {
         return [
-            'DescripcionPista.max' => 'La descripción no puede tener más de 200 caracteres.',
+            'DescripcionFamilia.max' => 'La descripción no puede tener más de 200 caracteres.',
         ];
     }
 }
