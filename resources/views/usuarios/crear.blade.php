@@ -5,12 +5,24 @@
     @csrf
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Código</label>
-            <input type="text" name="CodigoUsuario" class="form-control float-right" value="{{ old('CodigoUsuario') }}">
+            <label>Id Usuario</label>
+            <input type="text" name="UserId" class="form-control float-right" value="{{ old('UserId') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Descripción</label>
-            <input type="text" name="DescripcionUsuario" class="form-control float-right" value="{{ old('DescripcionUsuario') }}">
+            <label>Nombre</label>
+            <input type="text" name="Nombre" class="form-control float-right" value="{{ old('Nombre') }}">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+            <label>Email</label>
+            <input type="email" name="Email" class="form-control float-right" value="{{ old('Email') }}">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+            <label>Password</label>
+            <input type="password" name="Password" class="form-control float-right" value="{{ old('Password') }}">
+        </div>
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
+            <label>Administrador</label>
+            <input type="checkbox" name="IsAdmin" class="form-control float-right" value="{{ old('IsAdmin') }}">
         </div>
     </div>
     <div class="form-group row">

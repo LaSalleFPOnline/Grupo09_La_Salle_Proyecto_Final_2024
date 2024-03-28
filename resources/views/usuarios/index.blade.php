@@ -11,17 +11,21 @@
 <table class="table table-responsive table-striped table-borderer table-hover table-sm text-nowrap">
     <thead class="thead-dark">
         <tr>
-            <th>Código</th>
-            <th>Descripción</th>
-            <th></th>
-            <th></th>
+            <th>Id Usuario</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Administrador</th>
         </tr>
     </thead>
     <tbody>
         @foreach($usuarios as $usuario)
             <tr>
-                <td>{{ $usuario->CodigoUsuario }}</td>
-                <td>{{ $usuario->DescripcionUsuario }}</td>
+                <td>{{ $usuario->UserId }}</td>
+                <td>{{ $usuario->Nombre }}</td>
+                <td>{{ $usuario->Email }}</td>
+                <td>{{ $usuario->Password }}</td>
+                <td>{{ $usuario->IsAdmin }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ route('editar_usuario', ['id' => $usuario->id]) }}" title="Editar usuario">
                         <i class="fas fa-edit"></i>
