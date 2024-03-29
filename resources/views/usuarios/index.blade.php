@@ -15,7 +15,7 @@
             <th>Nombre</th>
             <th>Email</th>
             <th>Password</th>
-            <th>Administrador</th>
+            <th>Es Admin</th>
         </tr>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
                 <td>{{ $usuario->Nombre }}</td>
                 <td>{{ $usuario->Email }}</td>
                 <td>{{ $usuario->Password }}</td>
-                <td>{{ $usuario->IsAdmin }}</td>
+                <td>{{ $usuario->IsAdmin == 0 ? 'NO' : 'SI' }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ route('editar_usuario', ['id' => $usuario->id]) }}" title="Editar usuario">
                         <i class="fas fa-edit"></i>

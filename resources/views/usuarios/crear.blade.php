@@ -20,9 +20,10 @@
             <label>Password</label>
             <input type="password" name="Password" class="form-control float-right" value="{{ old('Password') }}">
         </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Administrador</label>
-            <input type="checkbox" name="IsAdmin" class="form-control float-right" value="{{ old('IsAdmin') }}">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 form-check form-check-inline">
+            <label class="form-check-label">Es Admin</label>
+            <input type="hidden" name="IsAdmin" value="0">
+            <input type="checkbox" name="IsAdmin" class="form-check-input float-right" value="1" @if(old('IsAdmin')) checked @endif>
         </div>
     </div>
     <div class="form-group row">
