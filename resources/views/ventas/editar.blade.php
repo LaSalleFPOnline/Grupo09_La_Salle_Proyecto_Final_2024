@@ -1,41 +1,41 @@
 @extends('layouts.plantilla')
 @section('title', 'Editar venta')
 @section('content')
-<form action="{{ route('actualizar_venta', $venta->id) }}" method="POST">
+<form action="{{ route('actualizar_venta', $venta->VentaId) }}" method="POST">
     @csrf @method("put")
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Código</label>
-            <input type="text" name="CodigoVenta" class="form-control float-right" value="{{ old('CodigoVenta', $venta->CodigoVenta) ?? '' }}">
+            <label>Venta</label>
+            <input type="text" name="VentaId" class="form-control float-right" value="{{ $venta->VentaId }}" readonly>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Linea</label>
-            <input type="text" name="LineaVenta" class="form-control float-right" value="{{ old('LineaVenta', $venta->LineaVenta) ?? '' }}">
+            <label>Línea</label>
+            <input type="text" name="Linea" class="form-control float-right" value="{{ $venta->Linea }}" readonly>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Usuario</label>
-            <input type="text" name="UsuarioVenta" class="form-control float-right" value="{{ old('UsuarioVenta', $venta->UsuarioVenta) ?? '' }}">
+            <label>Cliente</label>
+            <input type="text" name="UserId" class="form-control float-right" value="{{ old('UsuarioId', $venta->UserId) ?? '' }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Articulo</label>
-            <input type="text" name="ArticuloVenta" class="form-control float-right" value="{{ old('ArticuloVenta', $venta->ArticuloVenta) ?? '' }}">
+            <label>Artículo</label>
+            <input type="text" name="ArticuloId" class="form-control float-right" value="{{ old('ArticuloId', $venta->ArticuloId) ?? '' }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Reserva</label>
-            <input type="text" name="ReservaVenta" class="form-control float-right" value="{{ old('ReservaVenta', $venta->ReservaVenta) ?? '' }}">
+            <input type="text" name="ReservaId" class="form-control float-right" value="{{ old('ReservaId', $venta->ReservaId) ?? '' }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Precio</label>
-            <input type="text" name="PrecioVenta" class="form-control float-right" value="{{ old('PrecioVenta', $venta->PrecioVenta) ?? '' }}">
+            <input type="text" name="Precio" class="form-control float-right" value="{{ old('Precio', $venta->Precio) ?? '' }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Unidades</label>
-            <input type="text" name="UnidadesVenta" class="form-control float-right" value="{{ old('UnidadesVenta', $venta->UnidadesVenta) ?? '' }}">
+            <input type="text" name="Unidades" class="form-control float-right" value="{{ old('Unidades', $venta->Unidades) ?? '' }}">
         </div>
     </div>
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <a class="btn btn-block btn-warning" href="{{ route('listar_Ventas') }}">
+            <a class="btn btn-block btn-warning" href="{{ route('listar_ventas') }}">
                 <i class="fa fa-fw fa-reply-all"></i> Volver atrás
             </a>
         </div>

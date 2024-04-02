@@ -10,19 +10,19 @@ class VentasController extends Controller
 {
     public function listar()
     {
-        $Ventas = Venta::all();
-        return view('Ventas.index', compact(['Ventas'])); 
+        $ventas = Venta::all();
+        return view('ventas.index', compact(['ventas'])); 
     }
 
     public function crear()
     {
-        return view('Ventas.crear');
+        return view('ventas.crear');
     }
 
     public function guardar(ValidacionVenta $request)
     {
         if (Venta::create($request->all())) {
-            return redirect()->route('listar_Ventas')->with('mensaje', 'La Venta ha sido creada correctamente');
+            return redirect()->route('listar_ventas')->with('mensaje', 'La venta ha sido creada correctamente');
         } else {
             return response()->json(['mensaje' => 'fallo en el guardado']);
         }
@@ -30,16 +30,16 @@ class VentasController extends Controller
 
     public function editar($id)
     {
-        $Venta = Venta::find($id);
+        $venta = Venta::find($id);
 
-        return view('Ventas.editar', compact(['Venta'])); 
+        return view('ventas.editar', compact(['venta'])); 
     }
 
     public function actualizar(ValidacionVenta $request, $id)
     {
-        $Venta = Venta::find($id);
-        $Venta->update($request->all());
-        return redirect()->route('listar_Ventas')->with('mensaje', 'La Venta ha sido actualizada correctamente.');
+        $venta = Venta::find($id);
+        $venta->update($request->all());
+        return redirect()->route('listar_ventas')->with('mensaje', 'La venta ha sido actualizada correctamente.');
     } 
 
 
@@ -47,6 +47,6 @@ class VentasController extends Controller
     {
         Venta::destroy($id);
 
-        return redirect()->route('listar_Ventas');
+        return redirect()->route('listar_ventas');
     } 
 }

@@ -5,37 +5,30 @@
     @csrf
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Código</label>
-            <input type="text" name="CodigoVenta" class="form-control float-right" value="{{ old('CodigoVenta') }}">
+            <label>Cliente</label>
+            <input type="text" name="UserId" class="form-control float-right" value="{{ old('UserId') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Linea</label>
-            <input type="text" name="LineaVenta" class="form-control float-right" value="{{ old('LineaVenta') }}">
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>usuario</label>
-            <input type="text" name="UsuarioVenta" class="form-control float-right" value="{{ old('UsuarioVenta') }}">
-        </div>
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <label>Articulo</label>
-            <input type="text" name="ArticuloVenta" class="form-control float-right" value="{{ old('ArticuloVenta') }}">
+            <label>Artículo</label>
+            <input type="text" name="ArticuloId" class="form-control float-right" value="{{ old('ArticuloId') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Reserva</label>
-            <input type="text" name="ReservaVenta" class="form-control float-right" value="{{ old('ReservaVenta') }}">
+            <input type="text" name="ReservaId" class="form-control float-right" value="{{ old('ReservaId') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Precio</label>
-            <input type="text" name="PrecioVenta" class="form-control float-right" value="{{ old('PrecioVenta') }}">
+            <input type="text" name="Precio" class="form-control float-right" value="{{ old('Precio') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Unidades</label>
-            <input type="text" name="UnidadesVenta" class="form-control float-right" value="{{ old('UnidadesVenta') }}">
+            <input type="text" name="Unidades" class="form-control float-right" value="{{ old('Unidades') }}">
         </div>
     </div>
+    <input type="hidden" name="Linea" value="1">
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <a class="btn btn-block btn-warning" href="{{ route('listar_Ventas') }}">
+            <a class="btn btn-block btn-warning" href="{{ route('listar_ventas') }}">
                 <i class="fa fa-fw fa-reply-all"></i> Volver atrás
             </a>
         </div>
@@ -47,7 +40,7 @@
     </div>
 </form>
 @if ($errors->any())
-<div class="row">
+<div class="form-group row">
     <ul>
         @foreach ($errors->all() as $error)
             <li class="errorMessage">{{ $error }}</li>

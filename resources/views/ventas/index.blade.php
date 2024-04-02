@@ -11,32 +11,32 @@
 <table class="table table-responsive table-striped table-borderer table-hover table-sm text-nowrap">
     <thead class="thead-dark">
         <tr>
-            <th>Código</th>
-            <th>Linea</th>
-            <th>Usuario</th>
-            <th>Articulo</th>
+            <th>Venta</th>
+            <th>Línea</th>
+            <th>Cliente</th>
+            <th>Artículo</th>
             <th>Reserva</th>
             <th>Precio</th>
             <th>Unidades</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($Ventas as $venta)
+        @foreach($ventas as $venta)
             <tr>
-                <td>{{ $venta->CodigoVenta }}</td>
-                <td>{{ $venta->LineaVenta }}</td>
-                <td>{{ $venta->UsuarioVenta }}</td>
-                <td>{{ $venta->ArticuloVenta }}</td>
-                <td>{{ $venta->ReservaVenta }}</td>
-                <td>{{ $venta->PrecioVenta }}</td>
-                <td>{{ $venta->UnidadesVenta }}</td>
+                <td>{{ $venta->VentaId }}</td>
+                <td>{{ $venta->Linea }}</td>
+                <td>{{ $venta->UsuarioId }}</td>
+                <td>{{ $venta->ArticuloId }}</td>
+                <td>{{ $venta->ReservaId }}</td>
+                <td>{{ $venta->Precio }}</td>
+                <td>{{ $venta->Unidades }}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="{{ route('editar_venta', ['id' => $venta->id]) }}" title="Editar venta">
+                    <a class="btn btn-primary btn-sm" href="{{ route('editar_venta', ['id' => $venta->VentaId]) }}" title="Editar venta">
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>
                 <td>
-                    <form action="{{ route('eliminar_venta', ['id' => $venta->id, 'id' => $venta->id]) }}" method="POST">
+                    <form action="{{ route('eliminar_venta', ['id' => $venta->VentaId]) }}" method="POST">
                     @csrf @method('DELETE')
                     <button class="btn btn-block btn-danger btn-sm" type="submit" title="Eliminar venta">
                         <i class="fas fa-trash"></i>

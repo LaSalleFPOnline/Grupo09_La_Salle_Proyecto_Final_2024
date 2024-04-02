@@ -10,6 +10,7 @@ class Cobro extends Model
     use SoftDeletes;
 
     protected $table = 'cobros';
-    protected $primaryKey = 'CobroId','VentaId','Importe';
+    protected $primaryKey = ['CobroId','VentaId'];
+    protected $fillable = 'Importe';
     protected $dates = ['created_at','updated_at','deleted_at'];
 }
