@@ -23,9 +23,9 @@
             <tr>
                 <td>{{ $articulo->CodigoArticulo }}</td>
                 <td>{{ $articulo->DescripcionArticulo }}</td>
-                <td>{{ $articulo->FamiliaArticulo }}</td>
-                <td>{{ $articulo->StockArticulo }}</td>
-                <td>{{ $articulo->PrecioArticulo }}</td>
+                <td>{{ $articulo->FamiliaId }}</td>
+                <td>{{ $articulo->Stock }}</td>
+                <td>{{ $articulo->Precio }}</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="{{ route('editar_articulo', ['id' => $articulo->id]) }}" title="Editar articulo">
                         <i class="fas fa-edit"></i>

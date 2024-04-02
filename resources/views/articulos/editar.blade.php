@@ -14,15 +14,15 @@
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Familia</label>
-            <input type="text" name="FamiliaArticulo" class="form-control float-right" value="{{ old('FamiliaArticulo', $articulo->FamiliaArticulo) ?? '' }}">
+            <input type="text" name="FamiliaId" class="form-control float-right" value="{{ old('FamiliaId', $articulo->FamiliaId) ?? '' }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Stock</label>
-            <input type="text" name="StockArticulo" class="form-control float-right" value="{{ old('StockArticulo', $articulo->StockArticulo) ?? '' }}">
+            <input type="text" name="Stock" class="form-control float-right" value="{{ old('Stock', $articulo->Stock) ?? '' }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Precio</label>
-            <input type="text" name="PrecionArticulo" class="form-control float-right" value="{{ old('PrecioArticulo', $articulo->PrecioArticulo) ?? '' }}">
+            <input type="text" name="Precio" class="form-control float-right" value="{{ old('Precio', $articulo->Precio) ?? '' }}">
         </div>
     </div>
     <div class="form-group row">
