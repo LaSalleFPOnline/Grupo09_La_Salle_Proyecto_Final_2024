@@ -24,15 +24,12 @@ class ValidacionReserva extends FormRequest
     public function rules()
     {
         return [
-            'CodigoReserva' => 'required|integer',
-            'DescripcionReserva' => 'required|max:100',
         ];
     }
 
     public function messages()
     {
         return [
-            'DescripcionReserva.max' => 'La descripción no puede tener más de 100 caracteres.',
         ];
     }
 }

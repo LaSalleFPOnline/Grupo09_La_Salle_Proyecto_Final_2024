@@ -20,9 +20,21 @@
             </g>
         </svg>
         <h1 id="titulo">Padel Booking</h1>
+        <a class="boton-acceso-admin boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Admin</a>
+        <a class="boton-acceso-cliente boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Cliente</a>
         <div id="pistas">
             <form action="#" method="POST">
                 @csrf
+                <table>
+                    <thead>
+                        <tr>
+                            <td>
+                                <label class="titulo-tabla">Seleccione una fecha     </label>
+                                <input type="date" id="fecha" name="fecha" class="titulo-tabla" value="{{ $hoy }}" min="{{ $hoy }}">
+                            </td>
+                        </tr>
+                    </thead>
+                </table>
                 <table>
                     <thead>
                         <tr>
@@ -37,7 +49,25 @@
                         <tr>
                             <td class="celda-hora">{{ date('H:i', strtotime($hora->HoraDesde)) . " - " . date('H:i', strtotime($hora->HoraHasta)) }}</td>
                             @foreach($pistas as $pista)
-                            <td class="celda-pista">{{ $pista->CodigoPista }}</td>
+                                @php
+                                    $estadoPista = 'pista-libre';
+                                    $reservaId = 0;
+                                    $reserva = $reservas->where('PistaId', $pista->CodigoPista)->where('Fecha', $hoy)->where('Hora', $hora->HoraDesde)->first();
+                                    if ($reserva) {
+                                        $reservaId = $reserva->ReservaId;
+                                        if ($reserva->UserId == $cliente) {
+                                            $estadoPista = 'pista-reservada-propia';
+                                        } else {
+                                            $estadoPista = 'pista-reservada-otros';
+                                        }
+                                    }
+                                @endphp
+                            <td class="celda-pista {{ $estadoPista }}"
+                                data-reserva="{{ $reservaId }}"
+                                data-pista="{{ $pista->CodigoPista }}"
+                                data-hora="{{ $hora->HoraDesde }}"
+                                data-cliente="{{ $cliente }}">
+                            </td>
                             @endforeach
                         </tr>
                         @endforeach
@@ -57,10 +87,17 @@
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     });
     
-    $('.celda-pista').click(function() {
+    $('.celda-pista.pista-libre').click(function() {
         event.preventDefault();
-        var fila = $(this);
-        var ruta = $(this).data('url');
+
+        const fecha = $(this).val(); /* $('#fecha').val(); */
+        const fechaParts = fecha.split('/');
+        const fechaISO = fechaParts[2] + '-' + fechaParts[1] + '-' + fechaParts[0];
+        const celda = $(this);
+        const pista = celda.data('pista');
+        const hora = celda.data('hora');
+        const cliente = celda.data('cliente');
+
         Swal.fire({
             title: '¿Quiere reservar esta pista?',
             text: " ",
@@ -72,13 +109,9 @@
             cancelButtonText: 'Cancelar'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var param = {
-                        '_method' : 'delete'
-                    }
                     $.ajax({
-                        type: 'POST',
-                        url: ruta,
-                        data: param,
+                        type: 'GET',
+                        url: "/reservarpista/crearreserva/" + cliente + "/" + pista + "/" + encodeURIComponent(fechaISO) + "/" + hora + "/",
                         success: function(response) {
                             Swal.fire({
                                 position: 'top-end',
@@ -89,7 +122,76 @@
                             })
                         }
                     });
+
+                    $.ajax({
+                        type: "GET",
+                        url: "/portal/turnos/asignarzona/" + encodeURIComponent(fechaISO) + "/" + encodeURIComponent(fechaISO) + "/" + CodigoZona,
+                        success: function(response) { },
+                        error: function(error) { }
+                    });
+
                 }
         })
+    });
+
+    $('.celda-pista.pista-reservada-propia').click(function() {
+        event.preventDefault();
+
+        const celda = $(this);
+        const reservaId = celda.data('reserva');
+
+        Swal.fire({
+            title: '¿Quiere cancelar la reserva de esta pista?',
+            text: " ",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Cancelar reserva',
+            cancelButtonText: 'Salir'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'GET',
+                        url: "/reservarpista/cancelarreserva/" + reservaId,
+                        success: function(response) {                            
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                text: 'La pista ha sido cancelada correctamente',
+                                showConfirmButton: false,
+                                timer: 2500
+                            });
+                            celda.css('background-color', 'lime');
+                        }
+                    });
+                }
+        })
+    });
+
+    $('#fecha').change(function() {
+
+        const fecha = $(this).val(); /* $('#fecha').val(); */
+        const celda = $(this);
+        const pista = celda.data('pista');
+        const hora = celda.data('hora');
+        const cliente = celda.data('cliente');
+
+        $.ajax({
+            type: 'POST',
+            url: '/actualizar-estado-reservas',
+            data: {
+                fecha: fechaSeleccionada
+            },
+            success: function(response) {
+                // Manejar la respuesta del servidor si es necesario
+                console.log(response.message);
+            },
+            error: function(xhr, status, error) {
+                // Manejar errores si los hay
+                console.error(error);
+            }
+        });
+        
     });
 </script>

@@ -104,6 +104,12 @@ body {
     top: 50%;
     left: 12vw; 
 }
+.titulo-tabla {
+    background-color: cadetblue;
+    font: inherit;
+    border: 0px;
+    font-size: 1.5vw;
+}
 #pistas {
     position: absolute;
     top: 50%;
@@ -119,9 +125,10 @@ table, th, tr, td {
     border: 1px solid black;
     align-content: center;
     font-size: 1vw;
+    background-color: cadetblue
 }
 .celda-hora {
-    background-color: white;
+    background-color: cadetblue;
     text-align: center;
     padding-left: 1vw;
     padding-right: 1vw;
@@ -137,8 +144,19 @@ table, th, tr, td {
 }
 .celda-pista:hover {
     background-color: blueviolet;
-    cursor: pointer;
     text-align: center;
+}
+.pista-libre {
+    background-color: lime;
+    cursor: pointer;
+}
+.pista-reservada-propia {
+    background-color: blue;
+    cursor: not-pointer;
+}
+.pista-reservada-otros {
+    background-color: crimson;
+    cursor: not-allowed;
 }
 #footer {
     position: absolute;

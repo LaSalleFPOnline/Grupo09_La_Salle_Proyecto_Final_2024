@@ -60,6 +60,8 @@ Route::get('datosgenerales', [DatosGeneralesController::class, 'editar'])->name(
 Route::put('datosgenerales', [DatosGeneralesController::class, 'actualizar'])->name('actualizar_datos_generales');
 //Reservas
 Route::get('reservarpista', [ReservasController::class, 'reservar'])->name('reservar_pista');
+Route::get('reservarpista/crearreserva', [ReservasController::class, 'crear_reserva'])->name('crear_reserva');
+Route::get('reservarpista/cancelarreserva/{id}', [ReservasController::class, 'cancelar_reserva'])->name('cancelar_reserva');
 //Ventas
 Route::get('ventas/listar', [VentasController::class, 'listar'])->name('listar_ventas');
 Route::get('ventas/editar/{id}', [VentasController::class, 'editar'])->name('editar_venta');

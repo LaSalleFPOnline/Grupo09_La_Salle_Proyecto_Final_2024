@@ -10,6 +10,7 @@ class Reserva extends Model
     use SoftDeletes;
 
     protected $table = 'reservas';
-    protected $primaryKey = 'ReservaId', 'UserId', 'PistaId', 'Fecha' ;
+    protected $primaryKey = 'ReservaId';
+    protected $fillable = ['UserId', 'PistaId', 'Fecha', 'Hora'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 }
