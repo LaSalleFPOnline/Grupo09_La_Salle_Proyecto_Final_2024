@@ -24,15 +24,18 @@ class ValidacionCobro extends FormRequest
     public function rules()
     {
         return [
-            'CodigoCobro' => 'required|integer',
-            'DescripcionCobro' => 'required|max:200',
+            'CobroId' => 'required',
+            'VentaId' => 'required',
+            'Importe' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'DescripcionCobro.max' => 'La descripción no puede tener más de 200 caracteres.',
+            'CobroId.required' => 'La Id del cobro es requerida',
+            'VentaId.required' => 'La Id del cobro es requerida',
+            'Importe.required' => 'El importe es requirido',
         ];
     }
 }

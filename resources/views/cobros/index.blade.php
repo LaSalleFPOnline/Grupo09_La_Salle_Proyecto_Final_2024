@@ -17,18 +17,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach($Cobros as $cobro)
+        @foreach($cobros as $cobro)
             <tr>
-                <td>{{ $cobro->CodigoCobro }}</td>
-                <td>{{ $cobro->VentaCobro }}</td>
-                <td>{{ $cobro->ImporteCobro }}</td>
+                <td>{{ $cobro->CobroId }}</td>
+                <td>{{ $cobro->VentaId }}</td>
+                <td>{{ $cobro->Importe }}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="{{ route('editar_cobro', ['id' => $cobro->id]) }}" title="Editar cobro">
+                    <a class="btn btn-primary btn-sm" href="{{ route('editar_cobro', ['id' => $cobro->CobroId]) }}" title="Editar cobro">
                         <i class="fas fa-edit"></i>
                     </a>
                 </td>
                 <td>
-                    <form action="{{ route('eliminar_cobro', ['id' => $cobro->id, 'id' => $cobro->id]) }}" method="POST">
+                    <form action="{{ route('eliminar_cobro', ['id' => $cobro->CobroId]) }}" method="POST">
                     @csrf @method('DELETE')
                     <button class="btn btn-block btn-danger btn-sm" type="submit" title="Eliminar cobro">
                         <i class="fas fa-trash"></i>

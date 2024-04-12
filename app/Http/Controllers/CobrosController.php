@@ -10,19 +10,19 @@ class CobrosController extends Controller
 {
     public function listar()
     {
-        $Cobros = Cobro::all();
-        return view('Cobros.index', compact(['Cobros'])); 
+        $cobros = Cobro::all();
+        return view('cobros.index', compact(['cobros'])); 
     }
 
     public function crear()
     {
-        return view('Cobros.crear');
+        return view('cobros.crear');
     }
 
     public function guardar(ValidacionCobro $request)
     {
         if (Cobro::create($request->all())) {
-            return redirect()->route('listar_Cobros')->with('mensaje', 'La Cobro ha sido creada correctamente');
+            return redirect()->route('listar_cobros')->with('mensaje', 'El Cobro ha sido creada correctamente');
         } else {
             return response()->json(['mensaje' => 'fallo en el guardado']);
         }
@@ -30,16 +30,16 @@ class CobrosController extends Controller
 
     public function editar($id)
     {
-        $Cobro = Cobro::find($id);
+        $cobro = Cobro::find($id);
 
-        return view('Cobros.editar', compact(['Cobro'])); 
+        return view('cobros.editar', compact(['cobro'])); 
     }
 
     public function actualizar(ValidacionCobro $request, $id)
     {
-        $Cobro = Cobro::find($id);
-        $Cobro->update($request->all());
-        return redirect()->route('listar_Cobros')->with('mensaje', 'La Cobro ha sido actualizada correctamente.');
+        $cobro = Cobro::find($id);
+        $cobro->update($request->all());
+        return redirect()->route('listar_cobros')->with('mensaje', 'El Cobro ha sido actualizada correctamente.');
     } 
 
 
@@ -47,6 +47,6 @@ class CobrosController extends Controller
     {
         Cobro::destroy($id);
 
-        return redirect()->route('listar_Cobros');
+        return redirect()->route('listar_cobros');
     } 
 }

@@ -90,13 +90,12 @@
     $('.celda-pista.pista-libre').click(function() {
         event.preventDefault();
 
-        const fecha = $(this).val(); /* $('#fecha').val(); */
-        const fechaParts = fecha.split('/');
-        const fechaISO = fechaParts[2] + '-' + fechaParts[1] + '-' + fechaParts[0];
+        const fecha = $('#fecha').val();
         const celda = $(this);
         const pista = celda.data('pista');
         const hora = celda.data('hora');
         const cliente = celda.data('cliente');
+
 
         Swal.fire({
             title: '¿Quiere reservar esta pista?',
@@ -111,7 +110,7 @@
                 if (result.isConfirmed) {
                     $.ajax({
                         type: 'GET',
-                        url: "/reservarpista/crearreserva/" + cliente + "/" + pista + "/" + encodeURIComponent(fechaISO) + "/" + hora + "/",
+                        url: "/reservarpista/crearreserva/" + cliente + "/" + pista + "/" + fecha + "/" + hora + "/",
                         success: function(response) {
                             Swal.fire({
                                 position: 'top-end',
@@ -119,17 +118,10 @@
                                 text: 'La pista ha sido reservada correctamente',
                                 showConfirmButton: false,
                                 timer: 2500
-                            })
+                            });
+                            celda.css('background-color', 'blue');
                         }
                     });
-
-                    $.ajax({
-                        type: "GET",
-                        url: "/portal/turnos/asignarzona/" + encodeURIComponent(fechaISO) + "/" + encodeURIComponent(fechaISO) + "/" + CodigoZona,
-                        success: function(response) { },
-                        error: function(error) { }
-                    });
-
                 }
         })
     });

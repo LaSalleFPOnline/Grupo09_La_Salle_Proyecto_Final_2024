@@ -5,7 +5,7 @@
     <ul class="list-unstyled">
         <p>Panel de control</p>
         <li>
-            <a href="#">Reservas</a>
+            <a href="{{ route('listar_reservas') }}">Reservas</a>
         </li>
         <li>
             <a href="{{ route('listar_ventas') }}">Ventas</a>

@@ -10,7 +10,7 @@ class Usuario extends Model
     use SoftDeletes;
 
     protected $table = 'usuarios';
-    protected $primaryKey = 'Userid';
-    protected $fillable = ['Nombre', 'Email', 'Password', 'IsAdmin'];
+    protected $primaryKey = 'id';
+    protected $fillable = ['UserId', 'Nombre', 'Email', 'Password', 'IsAdmin'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 }

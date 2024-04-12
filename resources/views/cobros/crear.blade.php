@@ -6,20 +6,20 @@
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Código</label>
-            <input type="text" name="CodigoCobro" class="form-control float-right" value="{{ old('CodigoCobro') }}">
+            <input type="text" name="CobroId" class="form-control float-right" value="{{ old('CobroId') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Venta</label>
-            <input type="text" name="VentaCobro" class="form-control float-right" value="{{ old('VentaCobro') }}">
+            <input type="text" name="VentaId" class="form-control float-right" value="{{ old('VentaId') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Importe</label>
-            <input type="text" name="ImporteCobro" class="form-control float-right" value="{{ old('ImporteCobro') }}">
+            <input type="text" name="Importe" class="form-control float-right" value="{{ old('Importe') }}">
         </div>
     </div>
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
-            <a class="btn btn-block btn-warning" href="{{ route('listar_Cobros') }}">
+            <a class="btn btn-block btn-warning" href="{{ route('listar_cobros') }}">
                 <i class="fa fa-fw fa-reply-all"></i> Volver atrás
             </a>
         </div>

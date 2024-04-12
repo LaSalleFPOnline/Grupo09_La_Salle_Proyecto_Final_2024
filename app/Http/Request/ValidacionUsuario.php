@@ -24,8 +24,8 @@ class ValidacionUsuario extends FormRequest
     public function rules()
     {
         return [
-            'CodigoUsuario' => 'required|integer',
-            'DescripcionUsuario' => 'required|max:100',
+            'UserId' => 'required|integer',
+            'Nombre' => 'required|max:100',
         ];
     }
 
