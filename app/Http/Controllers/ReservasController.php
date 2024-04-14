@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 use App\Http\Request\ValidacionReserva;
 use App\Models\Reserva;
 use App\Models\Horario;
 use App\Models\Pista;
 use App\Models\Usuario;
-use Illuminate\Support\Facades\Mail;
 use App\Mail\PistaReservada;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
 
 class ReservasController extends Controller
 {
@@ -50,6 +54,7 @@ class ReservasController extends Controller
         ->WhereHas('pista', function($q) use ($DesdePista, $HastaPista) { $q->whereBetween('PistaId', [$DesdePista, $HastaPista]); })
         ->whereBetween('Fecha', [$DesdeFecha, $HastaFecha])
         ->get();
+        Session::flash('reservas', $reservas);
         return view('reservas.index', compact(['DesdeFecha', 'HastaFecha', 'DesdeCliente', 'DesdePista', 'clientes', 'pistas', 'reservas'])); 
     }
 
@@ -93,6 +98,40 @@ class ReservasController extends Controller
 
         return redirect()->route('listar_reservas');
     } 
+
+    public function informe() {
+        
+        /*$reservas = Session::get('reservas');
+        Session::reflash();
+
+        $options = new Options();
+        $options->set('tempDir', public_path('temp'));
+        $options->set('logOutputFile', storage_path('logs/dompdf_log.txt'));
+        $options->set('isHtml5ParserEnabled', true);
+        $pdf = PDF::loadView('reservas.informe', compact('reservas'));
+        return $pdf->stream();*/
+
+
+        $reservas = Session::get('reservas');
+        Session::reflash();
+
+        $options = new Options();
+        $options->set('tempDir', public_path('temp'));
+        $options->set('logOutputFile', storage_path('logs/dompdf_log.txt'));
+        $options->set('isHtml5ParserEnabled', true); 
+        $options->set('isPhpEnabled', true);
+
+        $pdf = new Dompdf($options);
+
+        $pdf->loadHtml(View::make('reservas.informe', compact('reservas')));
+
+        //$pdf->setPaper('A4', 'landscape')->render();
+        $pdf->render();
+
+        return response($pdf->output())->header('Content-Type', 'application/pdf');
+        //return view('reservas.informe', compact('reservas'));
+
+    }
 
     public function reservar(Request $request) 
     {

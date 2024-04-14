@@ -11,7 +11,7 @@ use App\Http\Controllers\DatosGeneralesController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\CobrosController;
-
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -90,3 +90,5 @@ Route::get('cobros/crear', [CobrosController::class, 'crear'])->name('crear_cobr
 Route::post('cobros/guardar', [CobrosController::class, 'guardar'])->name('guardar_cobro');
 Route::delete('cobros/eliminar/{id}', [CobrosController::class, 'eliminar'])->name('eliminar_cobro');
 Route::get('cobros/informe', [CobrosController::class, 'informe'])->name('informe_cobros');
+//PDF
+Route::get('generate-pdf', [PDFController::class, 'generatePDF']);

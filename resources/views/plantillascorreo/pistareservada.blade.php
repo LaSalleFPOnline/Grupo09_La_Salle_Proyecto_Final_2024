@@ -7,8 +7,7 @@
         <title>Correo de pista reservada</title>
         <link rel="stylesheet" href="{{ asset("public/css/email.css") }}">
     </head>
-
-    <div>
+    <body>
         <svg id="logo-email" version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,378.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                 <path d="M1335 3693 c-300 -39 -677 -199 -877 -373 -158 -136 -265 -302 -308
@@ -48,5 +47,5 @@
                 </tr>
             </tbody>
         </table>
-    </div>
+    </body>
 </html>
