@@ -23,14 +23,15 @@
         <a class="boton-acceso-admin boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Admin</a>
         <a class="boton-acceso-cliente boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Cliente</a>
         <div id="pistas">
-            <form action="#" method="POST">
-                @csrf
-                <table>
-                    <thead>
-                        <tr>
-                            <td>
-                                <label class="titulo-tabla">Seleccione una fecha     </label>
-                                <input type="date" id="fecha" name="fecha" class="titulo-tabla" value="{{ $hoy }}" min="{{ $hoy }}">
+            <table class="celda-transparente">
+                <thead>
+                    <tr class="celda-transparente">
+                        <td class="celda-transparente">
+                            <label class="titulo-tabla">Seleccione una fecha</label>
+                                <form id="formulario" method="GET">
+                                    <input type="date" id="fecha" name="fecha" class="titulo-tabla" value="{{ $fecha }}" min="{{ $fechahoy }}">
+                                    <button type="submit" style="display: none;"></button>
+                                </form>
                             </td>
                         </tr>
                     </thead>
@@ -52,7 +53,7 @@
                                 @php
                                     $estadoPista = 'pista-libre';
                                     $reservaId = 0;
-                                    $reserva = $reservas->where('PistaId', $pista->CodigoPista)->where('Fecha', $hoy)->where('Hora', $hora->HoraDesde)->first();
+                                    $reserva = $reservas->where('PistaId', $pista->CodigoPista)->where('Fecha', $fecha)->where('Hora', $hora->HoraDesde)->first();
                                     if ($reserva) {
                                         $reservaId = $reserva->ReservaId;
                                         if ($reserva->UserId == $cliente) {
@@ -73,7 +74,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            </form>
         </div>
     </body>
     <footer>
@@ -95,7 +95,6 @@
         const pista = celda.data('pista');
         const hora = celda.data('hora');
         const cliente = celda.data('cliente');
-
 
         Swal.fire({
             title: '¿Quiere reservar esta pista?',
@@ -161,29 +160,23 @@
         })
     });
 
-    $('#fecha').change(function() {
 
-        const fecha = $(this).val(); /* $('#fecha').val(); */
-        const celda = $(this);
-        const pista = celda.data('pista');
-        const hora = celda.data('hora');
-        const cliente = celda.data('cliente');
+    document.getElementById('fecha').addEventListener('change', function() {
+            document.getElementById('formulario').submit();
+        });
 
+    /*$('#fecha').change(function() {
+
+        const fecha = $(this).val();
+        alert("entro");
         $.ajax({
-            type: 'POST',
-            url: '/actualizar-estado-reservas',
-            data: {
-                fecha: fechaSeleccionada
-            },
+            type: 'GET',
+            url: '/reservarpista/' + fecha,
             success: function(response) {
-                // Manejar la respuesta del servidor si es necesario
-                console.log(response.message);
             },
             error: function(xhr, status, error) {
-                // Manejar errores si los hay
-                console.error(error);
             }
         });
         
-    });
+    });*/
 </script>
