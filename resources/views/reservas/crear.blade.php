@@ -6,19 +6,29 @@
     <div class="form-group row">
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Cliente</label>
-            <input type="text" name="UserId" class="form-control float-right" value="{{ old('UserId') }}">
+            <select class="form-select" name="UserId">
+                <option value="">Seleccionar...</option>
+                @foreach($clientes as $cliente)
+                <option value="{{ $cliente->UserId }}" {{ old('UserId') == $cliente->UserId ? 'selected' : '' }}>{{ $cliente->UserId . " - " . $cliente->Nombre }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Pista</label>
-            <input type="text" name="PistaId" class="form-control float-right" value="{{ old('PistaId') }}">
-        </div>        
+            <select class="form-select" name="PistaId">
+                <option value="">Seleccionar...</option>
+                @foreach($pistas as $pista)
+                <option value="{{ $pista->CodigoPista }}" {{ old('PistaId') == $pista->CodigoPista ? 'selected' : '' }}>{{ $pista->CodigoPista . " - " . $pista->DescripcionPista }}</option>
+                @endforeach
+            </select>  
+        </div>          
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Fecha</label>
             <input type="date" name="Fecha" class="form-control float-right" value="{{ old('Fecha') }}">
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Hora</label>
-            <input type="hour" name="Hora" class="form-control float-right" value="{{ old('Hora') }}">
+            <input type="time" name="Hora" class="form-control float-right" value="{{ old('Hora') }}">
         </div>
     </div>
     <div class="form-group row">

@@ -1,0 +1,38 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+@font-face {
+    font-family: "Fun City Level 3 Basic";
+    src: url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.eot");
+    src: url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/506ff1864a3cdecf43c4b1bc8c246b9c.svg#Fun City Level 3 Basic")format("svg");
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    font-family: "Fun City Level 3 Basic";
+    background-color: #FEB237;
+    height: 100%;
+}
+#logo-email {
+    position: absolute;
+    top: 1vw;
+    left: -3vw;
+}
+#titulo-email {
+    position: absolute;
+    top: 2vw;
+    left: 7vw;
+    color: black;
+}
+#tabla-email {
+    position: absolute;
+    top: 10vw;
+    left: 1vw;
+}
+#enlace-email {
+    position: absolute;
+    top: 20vw;
+    left: 12vw;
+}

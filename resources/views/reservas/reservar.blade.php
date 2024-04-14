@@ -87,7 +87,7 @@
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
     });
     
-    $('.celda-pista.pista-libre').click(function() {
+    $(document).on('click', '.celda-pista.pista-libre', function() {
         event.preventDefault();
 
         const fecha = $('#fecha').val();
@@ -118,14 +118,20 @@
                                 showConfirmButton: false,
                                 timer: 2500
                             });
-                            celda.css('background-color', 'blue');
+                            celda.removeClass('pista-libre').addClass('pista-reservada-propia');
+
+                            const vistaCorreo = response.email_html;
+                            const nuevaVentana = window.open();
+                            nuevaVentana.document.open();
+                            nuevaVentana.document.write(vistaCorreo);
+                            nuevaVentana.document.close();
                         }
                     });
                 }
         })
     });
 
-    $('.celda-pista.pista-reservada-propia').click(function() {
+    $(document).on('click', '.celda-pista.pista-reservada-propia', function() {
         event.preventDefault();
 
         const celda = $(this);
@@ -153,30 +159,16 @@
                                 showConfirmButton: false,
                                 timer: 2500
                             });
-                            celda.css('background-color', 'lime');
+                            celda.removeClass('pista-reservada-propia').addClass('pista-libre');
+                            celda.attr('data-reserva', '0');
                         }
                     });
                 }
         })
     });
 
+    $('#fecha').change(function() {
+        $('#formulario').submit();
+    });
 
-    document.getElementById('fecha').addEventListener('change', function() {
-            document.getElementById('formulario').submit();
-        });
-
-    /*$('#fecha').change(function() {
-
-        const fecha = $(this).val();
-        alert("entro");
-        $.ajax({
-            type: 'GET',
-            url: '/reservarpista/' + fecha,
-            success: function(response) {
-            },
-            error: function(xhr, status, error) {
-            }
-        });
-        
-    });*/
 </script>

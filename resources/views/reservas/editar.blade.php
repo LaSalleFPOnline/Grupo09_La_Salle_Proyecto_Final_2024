@@ -10,11 +10,21 @@
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Cliente</label>
-            <input type="text" name="UserId" class="form-control float-right" value="{{ old('UserId', $reserva->UserId) ?? '' }}">
+            <select class="form-select" name="UserId">
+                <option value="{{ $reserva->UserId }}"></option>
+                @foreach($clientes as $cliente)
+                <option value="{{ $cliente->UserId }}" {{ $cliente->UserId == $reserva->UserId ? 'selected' : '' }}>{{ $cliente->UserId . " - " . $cliente->Nombre }}</option>
+                @endforeach
+            </select>        
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Pista</label>
-            <input type="text" name="PistaId" class="form-control float-right" value="{{ old('PistaId', $reserva->PistaId) ?? '' }}">
+            <select class="form-select" name="PistaId">
+                <option value="{{ $reserva->PistaId }}"></option>
+                @foreach($pistas as $pista)
+                <option value="{{ $pista->CodigoPista }}" {{ $pista->CodigoPista == $reserva->PistaId ? 'selected' : '' }}>{{ $pista->CodigoPista . " - " . $pista->DescripcionPista }}</option>
+                @endforeach
+            </select>  
         </div>        
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Fecha</label>
@@ -22,7 +32,7 @@
         </div>
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12">
             <label>Hora</label>
-            <input type="hour" name="Hora" class="form-control float-right" value="{{ old('Hora', $reserva->Hora) ?? '' }}">
+            <input type="time" name="Hora" class="form-control float-right" value="{{ old('Hora', $reserva->Hora) ?? '' }}">
         </div>
     </div>
     <div class="form-group row">
