@@ -18,12 +18,12 @@ body {
 #logo-email {
     position: absolute;
     top: 1vw;
-    left: -3vw;
+    left: 1vw;
 }
 #titulo-email {
     position: absolute;
     top: 2vw;
-    left: 7vw;
+    left: 12vw;
     color: black;
 }
 #tabla-email {
@@ -33,6 +33,6 @@ body {
 }
 #enlace-email {
     position: absolute;
-    top: 20vw;
-    left: 12vw;
+    top: 12vw;
+    left: 1vw;
 }

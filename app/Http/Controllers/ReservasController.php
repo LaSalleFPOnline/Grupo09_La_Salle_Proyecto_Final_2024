@@ -14,6 +14,7 @@ use App\Mail\PistaReservada;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Log;
 
 class ReservasController extends Controller
 {
@@ -101,35 +102,17 @@ class ReservasController extends Controller
 
     public function informe() {
         
-        /*$reservas = Session::get('reservas');
-        Session::reflash();
-
-        $options = new Options();
-        $options->set('tempDir', public_path('temp'));
-        $options->set('logOutputFile', storage_path('logs/dompdf_log.txt'));
-        $options->set('isHtml5ParserEnabled', true);
-        $pdf = PDF::loadView('reservas.informe', compact('reservas'));
-        return $pdf->stream();*/
-
-
         $reservas = Session::get('reservas');
         Session::reflash();
-
         $options = new Options();
         $options->set('tempDir', public_path('temp'));
         $options->set('logOutputFile', storage_path('logs/dompdf_log.txt'));
         $options->set('isHtml5ParserEnabled', true); 
         $options->set('isPhpEnabled', true);
-
         $pdf = new Dompdf($options);
-
         $pdf->loadHtml(View::make('reservas.informe', compact('reservas')));
-
-        //$pdf->setPaper('A4', 'landscape')->render();
         $pdf->render();
-
         return response($pdf->output())->header('Content-Type', 'application/pdf');
-        //return view('reservas.informe', compact('reservas'));
 
     }
 
@@ -171,8 +154,10 @@ class ReservasController extends Controller
             $buscaCliente = Usuario::where('UserId', $cliente)->first();
             $nombre = $buscaCliente->Nombre;
             $enlace = 'http://grupo09lasalle.mywebcommunity.org/reservarpista/cancelarreserva/' . $nuevaReserva->ReservaId;
-                
-            /*Mail::to($buscaCliente->Email)->send(new PistaReservada($buscaCliente->Nombre, $pista, $fecha, $hora, $enlace));*/
+            /*Mail::to($buscaCliente->Email)->send(new PistaReservada($buscaCliente->Nombre, $pista, $fecha, $hora, $enlace));
+
+            return redirect()->route('reservar_pista')
+            ->with('mensaje', 'La reserva ha sido creada correctamente. Recibirá la confirmación por correo electrónico.');*/
 
             $correo_html = view('plantillascorreo.pistareservada', compact('nombre', 'pista', 'fecha', 'hora', 'enlace'))->render();
 
