@@ -12,7 +12,8 @@ class Usuario extends Model implements Authenticatable
 
     protected $table = 'usuarios';
     protected $primaryKey = 'id';
-    protected $fillable = ['UserId', 'Nombre', 'Email', 'Password', 'IsAdmin'];
+    protected $fillable = ['UserId', 'Nombre', 'Email', 'Password', 'IsAdmin', '_token'];
+    protected $nullable = ['UserId'];
     protected $dates = ['created_at','updated_at','deleted_at'];
 
     public function getAuthIdentifierName()

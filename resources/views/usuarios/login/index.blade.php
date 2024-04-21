@@ -18,6 +18,8 @@
                     <input class="form-control" type="password" name="Password" placeholder="Introduce tu contrasena">
                     <input class="boton-hover" type="submit" value="Entrar">
                 </form>
+                <hr>
+                <p>No tienes una cuenta? <a href="/usuarios/crear-cliente">Registrate</a></p>
             </div>
         </div>
         <a href="/">
