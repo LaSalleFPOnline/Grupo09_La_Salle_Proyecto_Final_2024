@@ -1,11 +1,11 @@
 <html>
     <head>
-    <link rel="stylesheet" href="{{ asset("public/css/reset.css") }}">
-    <link rel="stylesheet" href="{{ asset("public/css/inicio.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/reset.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/inicio.css") }}">
     </head>
     <body>
         <div id="contenedor-imagen-fondo">
-            <img id="imagen-fondo" src="{{ asset("public/img/imagen-fondo.jpg") }}">
+            <img id="imagen-fondo" src="{{ asset("img/imagen-fondo.jpg") }}">
         </div>
         <svg id="logo" version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,378.000000) scale(0.100000,-0.100000)" fill="#FFFFFF" stroke="none">

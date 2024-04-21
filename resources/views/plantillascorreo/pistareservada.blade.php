@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Correo de pista reservada</title>
-        <link rel="stylesheet" href="{{ asset("public/css/email.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/email.css") }}">
     </head>
     <body>
         <svg id="logo-email" version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">

@@ -9,6 +9,19 @@
     <body>
         <div id="contenedor-imagen-fondo">
             <img id="imagen-fondo" src="{{ asset("img/imagen-fondo.jpg") }}">
+            <div class="registro">
+                <h2 class="titulo-pagina">Crea tu cuenta</h2>
+                
+                <form method="POST" action="/usuarios/registro">
+                    @csrf
+                    <input class="form-control" type="text" name="Nombre" placeholder="Introduce tu nombre">
+                    <input class="form-control" type="email" name="Email" placeholder="Introduce tu email">
+                    <input class="form-control" type="password" name="Password" placeholder="Introduce tu contrasena">
+                    <input class="boton-hover" type="submit" value="Entrar">
+                </form>
+                <hr>
+                <p>Ya tienes cuenta? <br><a href="/usuarios/login">Inicia sesion</a></p>
+            </div>
         </div>
         <a href="/">
             <svg id="logo" version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">
@@ -26,9 +39,15 @@
             <h1 id="titulo">Padel Booking</h1>
         </a>
         <a class="boton-acceso-admin boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Admin</a>
-        <a class="boton-acceso-cliente boton-hover" href="{{ route('login_view') }}">Acceso Cliente</a>
-        <a class="boton-tienda-online boton-hover" href="{{ route('inicio') }}">Tienda Online</a>
-        <a class="boton-reservar-pista boton-hover" href="{{ route('reservar_pista', ['']) }}">Reservar pista</a>        
+        <div class="registro">
+            <form action="usuarios/guardar">
+                <input type="text" name="Nombre" placeholder="Introduce tu nombre">
+                <input type="email" email="Email" placeholder="Introduce tu email">
+                <input type="password" password="Password" placeholder="Introduce tu contraseña">
+                <input type="text" name="IsAdmin" value="0" hidden>
+                <input type="submit" value="Entrar">
+            </form>
+        </div>    
     </body>
     <footer>
         <p id="footer">Grupo 09 - La Salle - Proyecto Fin de Ciclo 2024</p>
