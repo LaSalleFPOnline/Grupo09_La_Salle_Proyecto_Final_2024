@@ -17,7 +17,7 @@ class UsuariosController extends Controller
         $email = $credentials['Email'];
         $password = $credentials['Password'];
 
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['Email' => $email, 'password' => $password])) {
             $request->session()->regenerate();
  
             return redirect()->intended('dashboard');

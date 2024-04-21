@@ -1,9 +1,11 @@
 <html>
-    @extends('includes.header')
-    @section('extra-headers')
-        <link rel="stylesheet" href="{{ asset("css/reset.css") }}">
-        <link rel="stylesheet" href="{{ asset("css/inicio.css") }}">
-    @endsection
+    <head>
+        @extends('includes.header')
+        @section('extra-headers')
+            <link rel="stylesheet" href="{{ asset("css/reset.css") }}">
+            <link rel="stylesheet" href="{{ asset("css/inicio.css") }}">
+        @endsection
+    </head>
     <body>
         <div id="contenedor-imagen-fondo">
             <img id="imagen-fondo" src="{{ asset("img/imagen-fondo.jpg") }}">

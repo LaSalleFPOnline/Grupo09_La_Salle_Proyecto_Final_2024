@@ -17,27 +17,28 @@ class Usuario extends Model implements Authenticatable
 
     public function getAuthIdentifierName()
     {
-
+        return $this->Email;
     }
 
     public function getAuthIdentifier()
     {
-
+        return $this->id;
     }
 
     public function getAuthPassword()
     {
-
+        return $this->Password;
     }
 
     public function getRememberToken()
     {
-
+        return $this->_token;
     }
 
     public function setRememberToken($value)
     {
-
+        $this->_token = $value;
+        $this->save();
     }
 
     public function getRememberTokenName()
