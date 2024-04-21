@@ -25,7 +25,8 @@ p {
 
 a,
 a:hover,
-a:focus {
+a:focus,
+.login input {
     color: inherit;
     text-decoration: none;
     transition: all 0.3s;
@@ -165,4 +166,42 @@ ul ul a {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+.titulo-pagina {
+    margin-left: -16%;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #fff;
+    text-wrap: nowrap;
+}
+
+/* LOGIN PAGE */
+
+.login {
+    display: block;
+    position: relative;
+    width: 400px;
+    margin: auto;
+    margin-top: calc(100vh - 60vh);
+    text-align: center;
+}
+
+.login input:not(input[type=submit]) {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.login input[type=submit] {
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 0.5vw 1vw;
+    font-size: 1rem;
+    text-align: center;
+    border: 0px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .2s;
 }

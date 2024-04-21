@@ -2,12 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Request\ValidacionUsuario;
 use App\Models\Usuario;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Request\ValidacionLogin;
+use App\Http\Request\ValidacionUsuario;
 
 class UsuariosController extends Controller
 {
+    public function login(ValidacionLogin $request)
+    {
+        $credentials = $request->post();
+
+        $email = $credentials['Email'];
+        $password = $credentials['Password'];
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            $request->session()->regenerate();
+ 
+            return redirect()->intended('dashboard');
+        }
+ 
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
+    public function loginView()
+    {
+        return view('usuarios.login.index');
+    }
+
+    public function crearClienteView()
+    {
+        return view('usuarios.registro.index');
+    }
+
     public function listar()
     {
         $usuarios = Usuario::all();

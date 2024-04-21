@@ -50,9 +50,12 @@ Route::post('pistas/guardar', [PistasController::class, 'guardar'])->name('guard
 Route::delete('pistas/eliminar/{id}', [PistasController::class, 'eliminar'])->name('eliminar_pista');
 Route::get('pistas/informe', [PistasController::class, 'informe'])->name('informe_pistas');
 //Usuarios
+Route::get('usuarios/login', [UsuariosController::class, 'loginView'])->name('login_view');
+Route::post('usuarios/login', [UsuariosController::class, 'login'])->name('login');
 Route::get('usuarios/listar', [UsuariosController::class, 'listar'])->name('listar_usuarios');
 Route::get('usuarios/editar/{id}', [UsuariosController::class, 'editar'])->name('editar_usuario');
 Route::put('usuarios/actualizar/{id}', [UsuariosController::class, 'actualizar'])->name('actualizar_usuario');
+Route::get('usuarios/crear-cliente', [UsuariosController::class, 'crearClienteView'])->name('crear_cliente');
 Route::get('usuarios/crear', [UsuariosController::class, 'crear'])->name('crear_usuario');
 Route::post('usuarios/guardar', [UsuariosController::class, 'guardar'])->name('guardar_usuario');
 Route::delete('usuarios/eliminar/{id}', [UsuariosController::class, 'eliminar'])->name('eliminar_usuario');
