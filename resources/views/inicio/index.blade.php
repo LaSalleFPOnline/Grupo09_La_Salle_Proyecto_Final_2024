@@ -1,11 +1,14 @@
 <html>
     <head>
-    <link rel="stylesheet" href="{{ asset("public/css/reset.css") }}">
-    <link rel="stylesheet" href="{{ asset("public/css/inicio.css") }}">
+        @extends('includes.header')
+        @section('extra-headers')
+            <link rel="stylesheet" href="{{ asset("css/reset.css") }}">
+            <link rel="stylesheet" href="{{ asset("css/inicio.css") }}">
+        @endsection
     </head>
     <body>
         <div id="contenedor-imagen-fondo">
-            <img id="imagen-fondo" src="{{ asset("public/img/imagen-fondo.jpg") }}">
+            <img id="imagen-fondo" src="{{ asset("img/imagen-fondo.jpg") }}">
         </div>
         <svg id="logo" version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,378.000000) scale(0.100000,-0.100000)" fill="#FFFFFF" stroke="none">
@@ -21,9 +24,9 @@
         </svg>
         <h1 id="titulo">Padel Booking</h1>
         <a class="boton-acceso-admin boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Admin</a>
-        <a class="boton-acceso-cliente boton-hover" href="{{ route('inicio') }}">Acceso Cliente</a>
+        <a class="boton-acceso-cliente boton-hover" href="{{ route('login_view') }}">Acceso Cliente</a>
         <a class="boton-tienda-online boton-hover" target="_blank" href="{{ route('tienda') }}">Tienda Online</a>
-        <a class="boton-reservar-pista boton-hover" href="{{ route('reservar_pista') }}">Reservar pista</a>        
+        <a class="boton-reservar-pista boton-hover" href="{{ route('reservar_pista', ['']) }}">Reservar pista</a>        
     </body>
     <footer>
         <p id="footer">Grupo 09 - La Salle - Proyecto Fin de Ciclo 2024</p>
