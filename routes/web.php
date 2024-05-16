@@ -78,6 +78,7 @@ Route::get('reservarpista/cancelarreserva/{id}', [ReservasController::class, 'ca
 //Tienda
 Route::get('tienda', [TiendaController::class, 'index'])->name('tienda');
 Route::get('tienda/articulos/{id}', [TiendaController::class, 'listar'])->name('listar_articulos_tienda');
+Route::get('tienda/carrito', [TiendaController::class, 'carrito'])->name('carrito_compra');
 //Ventas
 Route::get('ventas/listar', [VentasController::class, 'listar'])->name('listar_ventas');
 Route::get('ventas/editar/{id}', [VentasController::class, 'editar'])->name('editar_venta');
@@ -85,7 +86,9 @@ Route::put('ventas/actualizar/{id}', [VentasController::class, 'actualizar'])->n
 Route::get('ventas/crear', [VentasController::class, 'crear'])->name('crear_venta');
 Route::post('ventas/guardar', [VentasController::class, 'guardar'])->name('guardar_venta');
 Route::delete('ventas/eliminar/{id}', [VentasController::class, 'eliminar'])->name('eliminar_venta');
-Route::get('ventgas/informe', [VentasController::class, 'informe'])->name('informe_ventas');
+Route::get('ventas/informe', [VentasController::class, 'informe'])->name('informe_ventas');
+Route::get('ventas/venta_tienda/{id}', [VentasController::class, 'venta_tienda'])->name('venta_tienda');
+Route::delete('ventas/eliminar/carrito/{id}', [VentasController::class, 'eliminar_venta_carrito'])->name('eliminar_venta_carrito');
 //Cobros
 Route::get('cobros/listar', [CobrosController::class, 'listar'])->name('listar_cobros');
 Route::get('cobros/editar/{id}', [CobrosController::class, 'editar'])->name('editar_cobro');

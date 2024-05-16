@@ -17,10 +17,9 @@
     <thead class="thead-dark">
         <tr>
             <th>Venta</th>
-            <th>Línea</th>
+            <th>Estado</th>
             <th>Cliente</th>
             <th>Artículo</th>
-            <th>Reserva</th>
             <th>Precio</th>
             <th>Unidades</th>
         </tr>
@@ -29,10 +28,9 @@
         @foreach($ventas as $venta)
             <tr>
                 <td>{{ $venta->VentaId }}</td>
-                <td>{{ $venta->Linea }}</td>
-                <td>{{ $venta->UserId }}</td>
-                <td>{{ $venta->ArticuloId }}</td>
-                <td>{{ $venta->ReservaId }}</td>
+                <td>{{ $venta->Estado }}</td>
+                <td>{{ $venta->cliente->Nombre }}</td>
+                <td>{{ $venta->articulo->DescripcionArticulo }}</td>
                 <td>{{ $venta->Precio }}</td>
                 <td>{{ $venta->Unidades }}</td>
                 <td>

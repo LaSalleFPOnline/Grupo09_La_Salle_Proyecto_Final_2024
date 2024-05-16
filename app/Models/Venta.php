@@ -11,6 +11,17 @@ class Venta extends Model
 
     protected $table = 'ventas';
     protected $primaryKey = 'VentaId';
-    protected $fillable = ['Linea', 'UserId', 'ReservaId', 'ArticuloId', 'Precio', 'Unidades'];
+    protected $fillable = ['Estado', 'UserId', 'ArticuloId', 'Precio', 'Unidades'];
     protected $dates = ['created_at','updated_at','deleted_at'];
+
+    public function cliente()
+    {
+        return $this->belongsTo('App\Models\Usuario', 'UserId', 'UserId');
+    }
+
+    public function articulo()
+    {
+        return $this->belongsTo('App\Models\Articulo', 'ArticuloId', 'id');
+    }
+
 }

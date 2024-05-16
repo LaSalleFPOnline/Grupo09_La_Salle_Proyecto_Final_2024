@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Request\ValidacionVenta;
 use App\Models\Venta;
+use App\Models\Articulo;
 use Illuminate\Support\Facades\Session;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -23,6 +24,22 @@ class VentasController extends Controller
     {
         return view('ventas.crear');
     }
+
+    public function venta_tienda($articulo) {
+
+        $buscaArticulo = Articulo::where('id', $articulo)->first();
+        $datosVenta = [
+            'Estado' => 0, /* 0 En carrito, 1 Venta cerrada */
+            'UserId' => 2, /* Usuario Login */
+            'ArticuloId' => $buscaArticulo->id,
+            'Precio' => $buscaArticulo->Precio,
+            'Unidades' => 1
+        ];
+        
+        $venta = Venta::create($datosVenta);
+
+    }
+
 
     public function guardar(ValidacionVenta $request)
     {
@@ -55,6 +72,15 @@ class VentasController extends Controller
         return redirect()->route('listar_ventas');
     }
     
+    public function eliminar_venta_carrito($id) 
+    {
+        Venta::destroy($id);
+        $ventas = Venta::where('UserId', 2)->get();
+        $familias = Familia::all();
+        return view('tienda.carrito', compact(['ventas', 'familias']));
+    }
+
+
     public function informe() {
         
         $ventas = Session::get('ventas');
@@ -70,4 +96,5 @@ class VentasController extends Controller
         return response($pdf->output())->header('Content-Type', 'application/pdf');
 
     }
+
 }
