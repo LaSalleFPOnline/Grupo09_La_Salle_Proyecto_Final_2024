@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-    <meta charset="utf-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Correo de pista reservada</title>
-        <link rel="stylesheet" href="{{ asset("css/email.css") }}">
+        <title>Listado de familias</title>
     </head>
     <body>
-        <svg id="logo-email" version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="200px" height="100px" viewBox="0 0 302.000000 378.000000" preserveAspectRatio="xMidYMid meet">
             <g transform="translate(0.000000,378.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
                 <path d="M1335 3693 c-300 -39 -677 -199 -877 -373 -158 -136 -265 -302 -308
                 -475 -81 -321 11 -756 228 -1085 209 -316 631 -555 1131 -639 l94 -16 166
@@ -20,31 +19,28 @@
                 132 -516 334 -604 668 -106 399 38 626 501 789 214 75 366 91 505 53z"/>
             </g>
         </svg>
-        <h1 id="titulo-email">Padel Booking</h1>
-        <table id="tabla-email">
+        <h1>Lista de familias</h1>
+        <table>
             <thead>
                 <tr>
-                    <th style="background-color: #F49100; color: #FFFFFF">
-                        Hola, {{ $nombre }}
-                    </th>
+                    <th style="text-align:right"><h1>Listado de familias</h1></th>    
+                </tr>
+            </thead>
+        </table>
+        <table style="width:100%; border-collapse: collapse">
+            <thead>
+                <tr style="border: 1px solid black">
+                    <th style="border: 1px solid black; text-align: center">Codigo de la familia</th>
+                    <th style="border: 1px solid black; text-align: center">Descripcion</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <h3>
-                            Tienes reservada la pista {{ $pista }} para el {{ $fecha }} a las {{ $hora }}
-                        </h3> 
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <h3 id="enlace-email" style="background-color: #F49100; color: #FFFFFF">
-                            Para anular la reserva, 
-                            <a href="{{ $enlace }}" target="_blank" title="Eliminar reserva">Pulse este enlace</a>
-                        </h3>                             
-                    </td>
-                </tr>
+                @foreach($familias as $familia)
+                    <tr style="border: 1px solid black">
+                        <td style="border: 1px solid black; text-align: center">{{ $familia->CodigoFamilia }}</td>
+                        <td style="border: 1px solid black; text-align: center">{{ $familia->DescripcionFamilia }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </body>

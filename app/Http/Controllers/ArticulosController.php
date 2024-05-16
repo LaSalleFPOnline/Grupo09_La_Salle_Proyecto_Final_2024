@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Request\ValidacionArticulo;
 use App\Models\Articulo;
+use Illuminate\Support\Facades\Session;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
 
 class ArticulosController extends Controller
 {
     public function listar()
     {
         $articulos = Articulo::all();
-        return view('articulos.index', compact(['articulos'])); 
+        Session::flash('articulos', $articulos);
+        return view('articulos.index', compact('articulos')); 
     }
 
     public function crear()
@@ -46,5 +51,21 @@ class ArticulosController extends Controller
         Articulo::destroy($id);
 
         return redirect()->route('listar_articulos');
-    } 
+    }
+    
+    public function informe() {
+        
+        $articulos = Session::get('articulos');
+        Session::reflash();
+        $options = new Options();
+        $options->set('tempDir', public_path('temp'));
+        $options->set('logOutputFile', storage_path('logs/dompdf_log.txt'));
+        $options->set('isHtml5ParserEnabled', true); 
+        $options->set('isPhpEnabled', true);
+        $pdf = new Dompdf($options);
+        $pdf->loadHtml(View::make('articulos.informe', compact('articulos')));
+        $pdf->render();
+        return response($pdf->output())->header('Content-Type', 'application/pdf');
+
+    }
 }

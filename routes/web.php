@@ -8,6 +8,7 @@ use App\Http\Controllers\PistasController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\ControlPanelController;
 use App\Http\Controllers\DatosGeneralesController;
+use App\Http\Controllers\TiendaController;
 use App\Http\Controllers\ReservasController;
 use App\Http\Controllers\VentasController;
 use App\Http\Controllers\CobrosController;
@@ -74,6 +75,9 @@ Route::get('reservas/informe', [ReservasController::class, 'informe'])->name('in
 Route::get('reservarpista', [ReservasController::class, 'reservar'])->name('reservar_pista');
 Route::get('reservarpista/crearreserva/{cliente}/{pista}/{fecha}/{hora}', [ReservasController::class, 'crear_reserva_web'])->name('crear_reserva_web');
 Route::get('reservarpista/cancelarreserva/{id}', [ReservasController::class, 'cancelar_reserva'])->name('cancelar_reserva');
+//Tienda
+Route::get('tienda', [TiendaController::class, 'index'])->name('tienda');
+Route::get('tienda/articulos/{id}', [TiendaController::class, 'listar'])->name('listar_articulos_tienda');
 //Ventas
 Route::get('ventas/listar', [VentasController::class, 'listar'])->name('listar_ventas');
 Route::get('ventas/editar/{id}', [VentasController::class, 'editar'])->name('editar_venta');

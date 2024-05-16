@@ -11,6 +11,11 @@ class Articulo extends Model
 
     protected $table = 'articulos';
     protected $primaryKey = 'id';
-    protected $fillable = ['CodigoArticulo', 'DescripcionArticulo', 'FamiliaId', 'Stock', 'Precio'];
+    protected $fillable = ['CodigoArticulo', 'DescripcionArticulo', 'FamiliaId', 'Stock', 'Precio', 'Imagen'];
     protected $dates = ['created_at','updated_at','deleted_at'];
+
+    public function familia()
+    {
+        return $this->belongsTo('App\Models\Familia', 'FamiliaId', 'CodigoFamilia');
+    }
 }

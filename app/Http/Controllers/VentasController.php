@@ -5,13 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Request\ValidacionVenta;
 use App\Models\Venta;
+use Illuminate\Support\Facades\Session;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
 
 class VentasController extends Controller
 {
     public function listar()
     {
         $ventas = Venta::all();
-        return view('ventas.index', compact(['ventas'])); 
+        Session::flash('ventas', $ventas);
+        return view('ventas.index', compact('ventas')); 
     }
 
     public function crear()
@@ -48,5 +53,21 @@ class VentasController extends Controller
         Venta::destroy($id);
 
         return redirect()->route('listar_ventas');
-    } 
+    }
+    
+    public function informe() {
+        
+        $ventas = Session::get('ventas');
+        Session::reflash();
+        $options = new Options();
+        $options->set('tempDir', public_path('temp'));
+        $options->set('logOutputFile', storage_path('logs/dompdf_log.txt'));
+        $options->set('isHtml5ParserEnabled', true); 
+        $options->set('isPhpEnabled', true);
+        $pdf = new Dompdf($options);
+        $pdf->loadHtml(View::make('ventas.informe', compact('ventas')));
+        $pdf->render();
+        return response($pdf->output())->header('Content-Type', 'application/pdf');
+
+    }
 }

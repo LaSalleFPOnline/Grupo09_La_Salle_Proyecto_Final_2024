@@ -22,8 +22,8 @@
         <h1 id="titulo">Padel Booking</h1>
         <a class="boton-acceso-admin boton-hover" target="_blank" href="{{ route('controlpanel') }}">Acceso Admin</a>
         <a class="boton-acceso-cliente boton-hover" href="{{ route('inicio') }}">Acceso Cliente</a>
-        <a class="boton-tienda-online boton-hover" href="{{ route('inicio') }}">Tienda Online</a>
-        <a class="boton-reservar-pista boton-hover" href="{{ route('reservar_pista', ['']) }}">Reservar pista</a>        
+        <a class="boton-tienda-online boton-hover" target="_blank" href="{{ route('tienda') }}">Tienda Online</a>
+        <a class="boton-reservar-pista boton-hover" href="{{ route('reservar_pista') }}">Reservar pista</a>        
     </body>
     <footer>
         <p id="footer">Grupo 09 - La Salle - Proyecto Fin de Ciclo 2024</p>

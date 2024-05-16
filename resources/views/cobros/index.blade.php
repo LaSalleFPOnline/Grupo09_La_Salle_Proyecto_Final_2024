@@ -7,6 +7,11 @@
             <i class="fas fa-plus-circle"></i> Crear cobro 
         </a>
     </div>
+    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+        <a href="{{ route('informe_cobros') }}" target="_blank" class= "btn btn-danger form-control" title="Ver informe">
+            <i class="fas fa-file-pdf"></i>
+        </a>
+    </div>
 </div>
 <table class="table table-responsive table-striped table-borderer table-hover table-sm text-nowrap">
     <thead class="thead-dark">

@@ -7,6 +7,11 @@
             <i class="fas fa-plus-circle"></i> Crear venta 
         </a>
     </div>
+    <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+        <a href="{{ route('informe_ventas') }}" target="_blank" class= "btn btn-danger form-control" title="Ver informe">
+            <i class="fas fa-file-pdf"></i>
+        </a>
+    </div>
 </div>
 <table class="table table-responsive table-striped table-borderer table-hover table-sm text-nowrap">
     <thead class="thead-dark">
@@ -25,7 +30,7 @@
             <tr>
                 <td>{{ $venta->VentaId }}</td>
                 <td>{{ $venta->Linea }}</td>
-                <td>{{ $venta->UsuarioId }}</td>
+                <td>{{ $venta->UserId }}</td>
                 <td>{{ $venta->ArticuloId }}</td>
                 <td>{{ $venta->ReservaId }}</td>
                 <td>{{ $venta->Precio }}</td>
